@@ -7,7 +7,7 @@ var duration;
 var genreEl;
   
 document.addEventListener('DOMContentLoaded', function () {//wait till DOM loads before referencing any elements
-  document.getElementById('header').addEventListener('click', openUrl);
+  document.getElementById('search').addEventListener('click', openUrl);
 });
 
 
@@ -16,7 +16,7 @@ function openUrl(){
 	//chrome.tabs.create({url: thisUrl});
 	
 	var bookmarks = new Bookmarks();
-	bookmarks.getAllCat();
+	bookmarks.getRecent();
 }
 function getCurrentUrl(){
 	 chrome.tabs.getSelected(null, function(tab) {

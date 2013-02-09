@@ -1,20 +1,20 @@
+var classContext = null;
+
 function Bookmarks(){
 	/*
 	*	categories data structure is an array of category names
 	*	if one category contains other categories, it nests itself, within
 	*/
 	//this.initialize();
-	this.categories = null;
-	
-	
+	classContext = this;
+	classContext.allUrls = new Array();
 }
 
 //add functions to its prototype
-Bookmarks.prototype.getAllCat = function(){
-	var context = this;
-	var bookmarkTreeNodes = chrome.bookmarks.getTree(
+Bookmarks.prototype.getRecent = function(){
+	var bookmarkTreeNodes = chrome.bookmarks.getRecent(10,
     function(bookmarkTreeNodes) {
-		dumpTreeNodes(bookmarkTreeNodes, context)
+		dumpTreeNodes(bookmarkTreeNodes)
     });
 };
 
@@ -38,7 +38,7 @@ Bookmarks.prototype.searchBmarks = function(){
   alert ('searchBmarks');
 };
 
-function dumpTreeNodes(bookmarkNodes, context) {
+function dumpTreeNodes(bookmarkNodes) {
 	var i;
 	for (i = 0; i < bookmarkNodes.length; i++) {
 		var bookmarkNode = bookmarkNodes[i];
@@ -46,7 +46,8 @@ function dumpTreeNodes(bookmarkNodes, context) {
 			dumpTreeNodes(bookmarkNode.children);
 		}
 		else{
-			console.log(bookmarkNode.title);
+			classContext.allUrls.push(bookmarkNode.title)
+			//document.write();
 		}
 	}
 }
