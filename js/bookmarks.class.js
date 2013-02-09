@@ -1,3 +1,5 @@
+//maintain reference to it?
+//FixMe
 var classContext = null;
 
 function Bookmarks(){
@@ -12,10 +14,12 @@ function Bookmarks(){
 
 //add functions to its prototype
 Bookmarks.prototype.getRecent = function(){
+	//FixMe: 10 recent hardcoded now
 	var bookmarkTreeNodes = chrome.bookmarks.getRecent(10,
     function(bookmarkTreeNodes) {
 		dumpTreeNodes(bookmarkTreeNodes)
     });
+	return classContext.allUrls;
 };
 
 Bookmarks.prototype.checkCatExists = function(){

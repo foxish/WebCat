@@ -2,21 +2,19 @@
 // Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
 // Developer: Anirudh R (http://anirudhr.com/about.php) 
 
-var bgp = chrome.extension.getBackgroundPage();//all function calls to background page are done thru this variable
-var duration; 
-var genreEl;
-  
-document.addEventListener('DOMContentLoaded', function () {//wait till DOM loads before referencing any elements
-  document.getElementById('search').addEventListener('click', openUrl);
+$(function(){//wait till DOM loads before referencing any elements
+	openUrl();
+	/*$('#search').click(openUrl);*/
 });
 
-
 function openUrl(){
-	var thisUrl = "chrome://bookmarks";
+	//var thisUrl = "chrome://bookmarks";
 	//chrome.tabs.create({url: thisUrl});
-	
+	var resultArray =  [];
 	var bookmarks = new Bookmarks();
-	bookmarks.getRecent();
+	resultArray = bookmarks.getRecent();
+	console.log(resultArray);
+	//$('#result').text(resultArray[0]);  //inserts a string separated by what you pass as param
 }
 function getCurrentUrl(){
 	 chrome.tabs.getSelected(null, function(tab) {
