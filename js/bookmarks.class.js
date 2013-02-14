@@ -1,15 +1,14 @@
 //maintain reference to it?
-//FixMe
-var classContext = null;
+//FixMe: Globals
+var bookmarkArray = new Array();
 
+//Class Bookmarks
 function Bookmarks(){
 	/*
 	*	categories data structure is an array of category names
 	*	if one category contains other categories, it nests itself, within
 	*/
 	//this.initialize();
-	classContext = this;
-	classContext.allUrls = new Array();
 }
 
 //add functions to its prototype
@@ -19,7 +18,7 @@ Bookmarks.prototype.getRecent = function(){
     function(bookmarkTreeNodes) {
 		dumpTreeNodes(bookmarkTreeNodes)
     });
-	return classContext.allUrls;
+	return bookmarkArray;
 };
 
 Bookmarks.prototype.checkCatExists = function(){
@@ -50,7 +49,7 @@ function dumpTreeNodes(bookmarkNodes) {
 			dumpTreeNodes(bookmarkNode.children);
 		}
 		else{
-			classContext.allUrls.push(bookmarkNode.title)
+			bookmarkArray.push(bookmarkNode.title)
 			//document.write();
 		}
 	}
