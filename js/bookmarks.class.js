@@ -1,6 +1,5 @@
 //maintain reference to it?
 //FixMe: Globals
-var bookmarkArray = new Array();
 var classContext;
 
 //Class Bookmarks
@@ -10,6 +9,7 @@ function Bookmarks(){
 	*	if one category contains other categories, it nests itself, within
 	*/
 	this.count = 0;
+	this.query = "";
 	classContext = this;
 }
 
@@ -27,7 +27,8 @@ Bookmarks.prototype.addBmark = function(titleString, urlString){
 	//remove hardcoded reference to (Other Bookmarks: 2)
 };
 
-Bookmarks.prototype.getAllBmarks = function(){
+Bookmarks.prototype.getAllBmarks = function(query){
+	this.query = query;
 	var callback = function(bookmarkTreeNodes) {
 		dumpTreeNodes(bookmarkTreeNodes);
     }
@@ -44,15 +45,17 @@ Bookmarks.prototype.searchBmarks = function(){
   alert ('searchBmarks');
 };
 
-function dumpTreeNodes(bookmarkNodes) {
+function dumpTreeNodes(bookmarkNodes, query) {
 	for (var i = 0; i < bookmarkNodes.length; i++) {
 		var bookmarkNode = bookmarkNodes[i];
 		if (bookmarkNode.children && bookmarkNode.children.length > 0) {
 			dumpTreeNodes(bookmarkNode.children);
 		}
 		else{
-			writeToDom(bookmarkNode.title, bookmarkNode.url, bookmarkNode.id);
-			classContext.count++;
+			if(String(bookmarkNode.title).indexOf(classContext.query) != -1 || String(bookmarkNode.url).indexOf(classContext.query) != -1){
+				writeToDom(bookmarkNode.title, bookmarkNode.url, bookmarkNode.id);
+				classContext.count++;
+			}
 		}
 	}
 	setResultCount(classContext.count);

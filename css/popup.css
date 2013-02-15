@@ -37,7 +37,7 @@ hr.drop_shadow {
 }
 /*truncate text with ellipsis*/
 .truncate {
-	width: 250px;
+	width: 50px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -64,6 +64,7 @@ hr.drop_shadow {
 	color: #fff;
 	text-align:center; 
 	margin-top:10px;
+	z-index:0;
 }
 #sec-search{
 	height:100%;
@@ -105,6 +106,8 @@ hr.drop_shadow {
 	float:right;
 	color: red;
 	margin-right:5px;
-	
+	margin-top:1px;
+	height:18px;
+	z-index: 100;
 	
 }

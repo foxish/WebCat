@@ -24,9 +24,13 @@ function setResultCount(count){
 
 function setEventListeners(){
 	$('#search_button').click(function(){
-
+		$('#result').empty();
+		var bookmarks = new Bookmarks();
+		var query = $('#search').val();
+		bookmarks.getAllBmarks(query);
 	});
 	$('#add_button').click(function(){
+		$('#result').empty();
 		var bookmarks = new Bookmarks();
 		var url = $('#currenturl').val();
 		var title = $('#addName').val();
@@ -54,7 +58,7 @@ function writeToDom(title, urlString, id){
 	var anchor = $('<a>');
 	
 	//set anchor attributes and click event handler
-	anchor.attr('href', urlString);
+	//anchor.attr('href', urlString);
 	anchor.attr('class', 'metro-tile resultlist truncate');
 	anchor.text(title);
 	
