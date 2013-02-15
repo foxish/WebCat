@@ -5,8 +5,9 @@
 // Developer: Anirudh R (http://anirudhr.com/about.php) -->
   <head>
     <title>WebCat</title>
-	<!-- jquery -->
+	<!-- jquery & jquery-ui-->
 	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
 	
 	<!-- access bookmarks -->
 	<script src="js/bookmarks.class.js"></script>
@@ -24,18 +25,21 @@
 		<div id="content">
 			<div id="sec-search">
 				<input placeholder="Enter Tags/Terms" id="search" class="txtarea" style="width:120px"></textarea>
-					<a class="metro-tile uibutton">Search</a>
+					<a class="metro-tile uibutton" id="search_button">Search</a>
 			</div>
 			<div class="vr"></div>
 			<div id="sec-add">
 				<input placeholder="URL" id="currenturl" class="txtarea" disabled="disabled"></textarea>
 				<input placeholder="Name" id="addName" class="txtarea"></textarea>
 				<input placeholder="Tags" id="addTags" class="txtarea"></textarea>
-					<a class="metro-tile uibutton">Add</a>
+					<a class="metro-tile uibutton" id="add_button">Add</a>
 			</div>
 			<br />
 		</div>
 		<hr class="drop_shadow"/>
+		<div class="resultcount">Results: <span id="numresults"></span></div>
+		<!-- modal confirmation dialog -->
+		<div id="modaldialog"></div>
 		<!-- results come in here -->
 		<div id="result"></div>
 		

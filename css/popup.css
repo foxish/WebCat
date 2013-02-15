@@ -83,7 +83,6 @@ hr.drop_shadow {
 	height:150px;
 	margin-left:10%;
 	float:left;
-
 }
 .txtarea{
 	display:block; 
@@ -92,7 +91,20 @@ hr.drop_shadow {
 	margin-top:5px;
 
 }
+.resultcount{
+	color: #fff;
+	text-align: center;
+	
+
+}
 #currenturl{
 	
 
+}
+#deletelink{
+	float:right;
+	color: red;
+	margin-right:5px;
+	
+	
 }
