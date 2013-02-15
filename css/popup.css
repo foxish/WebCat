@@ -15,8 +15,8 @@ h4{color:#ffffff;font:20px 'Roboto', sans-serif;padding:6px 0 0px;text-align:cen
 h5{font:20px 'Roboto', sans-serif;}
 
 #mainwrap{margin:0 auto;overflow:hidden;position:relative;width:340px;}
-#cardstyle{/*background-color:#EBEBEB;*/border:0px solid #d4d4d4;margin:10px auto 20px;overflow:hidden;padding:6px;position:relative;width:300px;}
-#content{overflow:hidden;position:relative;width:300px;}
+#cardstyle{border:0px solid #d4d4d4;margin:10px auto 20px;overflow:hidden;padding:6px;position:relative;width:300px;}
+#content{overflow:none;position:relative;width:300px;height:130px;}
 #pagecontainer{position:relative;width:9999px;}
 .section{float:left;margin-right:50px;padding:0 10px 25px;position:relative;width:280px;}
 #menuwrap{margin:0 auto;}
@@ -30,15 +30,11 @@ hr.drop_shadow {
     height: 10px;
     border: 1;
     box-shadow: inset 0 9px 9px -3px rgba(255,255,255,0.2);
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-      border-radius: 5px;
-	  display:block;
-	  float:none;
+	border-radius: 5px;
+	display:block;
+	float:none;
+	width:100%;
 }
-
 /*truncate text with ellipsis*/
 .truncate {
 	width: 250px;
@@ -53,8 +49,11 @@ hr.drop_shadow {
 	display: block; 
 	background-color: #212121; 
 	color: #fff;
-	text-align:center; 
+	text-align:left; 
 	margin-top:10px;
+}
+.favicon{
+	margin-right: 7px;
 }
 .uibutton{
 	cursor: pointer; 
@@ -66,31 +65,34 @@ hr.drop_shadow {
 	text-align:center; 
 	margin-top:10px;
 }
-#search{
+#sec-search{
 	height:100%;
 	float:left;
 	margin-top:5px;
 	width:40%;
 	display:inline;
 }
-
-#add{
+#sec-add{
 	height:100%;
 	float:right;
 	margin-top:5px;
 	width:40%;
 }
-
 .vr{
 	border-left:1px solid #ffffff;
 	height:150px;
-	margin-left:12%;
+	margin-left:10%;
 	float:left;
 
 }
 .txtarea{
+	display:block; 
+	height: 20px;
+	width: 115px; 
+	margin-top:5px;
+
+}
+#currenturl{
 	
-
-
 
 }

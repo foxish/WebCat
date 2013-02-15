@@ -7,37 +7,45 @@ var LINEBREAK = "<br />";
 
 
 $(function(){//wait till DOM loads before referencing any elements
-	getRecent(); //get recent bookmarks
+	//setup event listeners for the search and add button
+	
+
+	//end
+	getCurrentUrl(); //write current URL stuff, prepare to add bookmark
+	
+	//if search is empty, get recent bookmarks
+	getRecent();
 	
 });
-
 function getRecent(){
-	var resultArray =  [];
+	$('#result').empty();
 	var bookmarks = new Bookmarks();
-	resultArray = bookmarks.getRecent();
+	bookmarks.getRecent();
 }
-
 function getCurrentUrl(){
 	 chrome.tabs.getSelected(null, function(tab) {
-        var tabId = tab.id;
-        var tabUrl = tab.url;
-        alert(tabUrl);
+		$('#addName').val(tab.title);
+		$('#currenturl').val(tab.url);
     });
 }
-
 function writeToDom(title, urlString){
-	var launchFunction = function(){
-		;
-	}	
+	//create anchor
 	var anchor = $('<a>');
+	
+	//set anchor attributes and click event handler
 	anchor.attr('href', urlString);
 	anchor.attr('class', 'metro-tile truncate resultlist');
 	anchor.text(title);
+	
+	//create image tag
+	var img = $('<img>');
+	img.attr('src', 'chrome://favicon/' + urlString);
+	img.attr('class', 'favicon');
+	anchor.prepend(img);
+	
+	//attach handler to anchor
 	anchor.click(function() {
 		chrome.tabs.create({url: urlString});
     });
 	$('#result').append(anchor);
-	/*
-	"<a class='metro-tile truncate' style=''>" + title + "</a>"
-	*/
 }
