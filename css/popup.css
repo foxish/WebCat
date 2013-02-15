@@ -38,3 +38,59 @@ hr.drop_shadow {
 	  display:block;
 	  float:none;
 }
+
+/*truncate text with ellipsis*/
+.truncate {
+	width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.resultlist{
+	cursor: pointer; 
+	width: 100%; 
+	height: 18px; 
+	display: block; 
+	background-color: #212121; 
+	color: #fff;
+	text-align:center; 
+	margin-top:10px;
+}
+.uibutton{
+	cursor: pointer; 
+	width: 60px; 
+	height: 18px; 
+	display: block; 
+	background-color: deepSkyBlue; 
+	color: #fff;
+	text-align:center; 
+	margin-top:10px;
+}
+#search{
+	height:100%;
+	float:left;
+	margin-top:5px;
+	width:40%;
+	display:inline;
+}
+
+#add{
+	height:100%;
+	float:right;
+	margin-top:5px;
+	width:40%;
+}
+
+.vr{
+	border-left:1px solid #ffffff;
+	height:150px;
+	margin-left:12%;
+	float:left;
+
+}
+.txtarea{
+	
+
+
+
+}

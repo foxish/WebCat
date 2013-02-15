@@ -2,6 +2,7 @@
 //FixMe: Globals
 var bookmarkArray = new Array();
 
+
 //Class Bookmarks
 function Bookmarks(){
 	/*
@@ -14,11 +15,10 @@ function Bookmarks(){
 //add functions to its prototype
 Bookmarks.prototype.getRecent = function(){
 	//FixMe: 10 recent hardcoded now
-	var bookmarkTreeNodes = chrome.bookmarks.getRecent(10,
-    function(bookmarkTreeNodes) {
-		dumpTreeNodes(bookmarkTreeNodes)
-    });
-	return bookmarkArray;
+	var callback = function(bookmarkTreeNodes) {
+		dumpTreeNodes(bookmarkTreeNodes);
+    }
+	chrome.bookmarks.getRecent(10, callback);
 };
 
 Bookmarks.prototype.checkCatExists = function(){
@@ -49,8 +49,7 @@ function dumpTreeNodes(bookmarkNodes) {
 			dumpTreeNodes(bookmarkNode.children);
 		}
 		else{
-			bookmarkArray.push(bookmarkNode.title)
-			//document.write();
+			writeToDom(bookmarkNode.title, bookmarkNode.url);
 		}
 	}
 }
