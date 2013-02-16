@@ -96,7 +96,7 @@ function writeToDom(title, urlString, id){
 		chrome.tabs.create({url: urlString});
     });
 	
-	var deleteLink = $('<a id="deletelink" href="#" class="hoverlink">Del</a>');
+	var deleteLink = $('<a id="deletelink" href="#" class="hoverlink">Delete</a>');
 	anchor.hover(function(){
 		anchor.prepend(deleteLink);
 		//take care of click on this delete
