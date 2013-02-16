@@ -2,29 +2,97 @@
 // Creative-Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)
 Developer: Anirudh R (http://anirudhr.com/about.php) */
 
-*{border:0;font:inherit;font-size:100%;margin:0;padding:0;vertical-align:baseline;}
-body{background-color:#000000;color:#646464;font:12px/16px 'Roboto', sans-serif;}
-ol,ul{list-style:none;list-style-image:none;list-style-position:outside;list-style-type:none;}
-a img{border:none;}
-a{color:#000000;text-decoration:none;}
-a:hover,a:focus{color:#666;text-decoration:underline;}
-p{font-family:'Roboto', sans-serif;padding:0 2px 10px;}
-h4{color:#ffffff;font:20px 'Roboto', sans-serif;padding:6px 0 0px;text-align:center}
-.left{float:left;margin:0 15px 5px 0;}
-.right{float:right;margin:0 0 5px 15px;}
-h5{font:20px 'Roboto', sans-serif;}
-
-#mainwrap{margin:0 auto;overflow:hidden;position:relative;width:340px;}
-#cardstyle{border:0px solid #d4d4d4;margin:10px auto 20px;overflow:hidden;padding:6px;position:relative;width:300px;}
-#content{overflow:none;position:relative;width:300px;height:130px;}
-#pagecontainer{position:relative;width:9999px;}
-.section{float:left;margin-right:50px;padding:0 10px 25px;position:relative;width:280px;}
-#menuwrap{margin:0 auto;}
-
+*{
+	border:0;
+	font:inherit;
+	font-size:100%;
+	margin:0;
+	padding:0;
+	vertical-align:baseline;
+}
+body{
+	background-color:#000000;
+	color:#646464;
+	font:12px/16px 'Roboto', sans-serif;
+	height:475px;
+	overflow:hidden;
+}
+ol,ul{
+	list-style:none;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+}
+a img{
+	border:none;
+}
+a{
+	color:#000000;
+	text-decoration:none;
+}
+a:hover,a:focus{
+	color:#666;
+	text-decoration:underline;
+}
+p{
+	font-family:'Roboto', 
+	sans-serif;padding:0 2px 10px;
+}
+h4{
+	color:#ffffff;
+	font:20px 'Roboto', sans-serif;
+	padding:6px 0 0px;
+	text-align:center
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); 
+}
+.left{
+	float:left;
+	margin:0 15px 5px 0;
+}
+.right{
+	float:right;
+	margin:0 0 5px 15px;
+}
+h5{
+	font:20px 'Roboto', sans-serif;
+}
+#mainwrap{
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	width:340px;
+	height:100%;
+}
+#cardstyle{
+	border:0px solid #d4d4d4;
+	margin:10px auto 20px;
+	overflow:hidden;
+	padding:6px;
+	position:relative;
+	width:300px;
+	height:100%;
+}
+#content{
+	overflow:hidden;
+	position:relative;
+	width:300px;
+	height:130px;
+}
 img{
 	cursor:pointer;
 }
-
 /*horizontal rule in use*/
 hr.drop_shadow {
     height: 10px;
@@ -39,7 +107,7 @@ hr.drop_shadow {
 .truncate {
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: pre-wrap;
+	white-space: normal;
 }
 .resultlist{
 	cursor: pointer; 
@@ -93,14 +161,14 @@ hr.drop_shadow {
 .resultcount{
 	color: #fff;
 	text-align: center;
-	
-
+	margin-bottom: 5px;
 }
-#currenturl{
-	
-
+#result{
+	height:290px;
+	overflow-x:hidden;
+	overflow-y:auto;
 }
-#deletelink{
+.hoverlink{
 	float:right;
 	color: red;
 	margin-right:5px;

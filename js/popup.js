@@ -5,19 +5,25 @@
 //constants (of sorts)
 var LINEBREAK = "<br />";
 
+
 $(function(){//wait till DOM loads before referencing any elements
 	//setup event listeners for the search and add button
 	setEventListeners();
-
-
-	//end
-	getCurrentUrl(); //write current URL stuff, prepare to add bookmark
-	
-	//if search is empty, get recent bookmarks
-	getRecent();
-	
+	//write current URL stuff, prepare to add bookmark
+	getCurrentUrl(); 
+	showResults();
 });
 
+function showResults(){
+	chrome.storage.sync.get('search', function(obj) {
+		if(obj.search){
+			$('#search').val(obj.search);
+			$('#search_button').click();
+		}else{
+			getRecent();
+		}
+	});
+}
 function setResultCount(count){
 	$('#numresults').text(count);
 }
@@ -27,7 +33,12 @@ function setEventListeners(){
 		$('#result').empty();
 		var bookmarks = new Bookmarks();
 		var query = $('#search').val();
-		bookmarks.getAllBmarks(query);
+		if(!query){
+			getRecent();
+		}else{
+			bookmarks.getAllBmarks(query);
+			chrome.storage.sync.set({'search': query}, function() {});
+		}
 	});
 	$('#add_button').click(function(){
 		$('#result').empty();
@@ -35,10 +46,9 @@ function setEventListeners(){
 		var url = $('#currenturl').val();
 		var title = $('#addName').val();
 		var tags = $('#addTags').val();
-		bookmarks.addBmark(title, url);
-		
+		bookmarks.addBmark(title, url, tags);
 		//update the current dialog
-		getRecent();
+		showResults();
 	});
 }
 function getRecent(){
@@ -72,13 +82,14 @@ function writeToDom(title, urlString, id){
 		chrome.tabs.create({url: urlString});
     });
 	
-	var deleteLink = $('<a id="deletelink" href="#">Delete</a>');
+	var deleteLink = $('<a id="deletelink" href="#" class="hoverlink">Del</a>');
 	anchor.hover(function(){
 		anchor.prepend(deleteLink);
 		//take care of click on this delete
 		$('#deletelink').click(function(){
 			chrome.bookmarks.remove(String(id));
-			getRecent();
+			e.preventDefault();
+			showResults();
 		});
 	},
 	function() { //unhover

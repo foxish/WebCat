@@ -22,7 +22,8 @@ Bookmarks.prototype.getRecent = function(){
 	chrome.bookmarks.getRecent(10, callback);
 };
 
-Bookmarks.prototype.addBmark = function(titleString, urlString){
+Bookmarks.prototype.addBmark = function(titleString, urlString, tags){
+	titleString += "##" + tags;
 	chrome.bookmarks.create({parentId: "2", title: titleString, url: urlString});
 	//remove hardcoded reference to (Other Bookmarks: 2)
 };
@@ -53,7 +54,12 @@ function dumpTreeNodes(bookmarkNodes, query) {
 		}
 		else{
 			if(String(bookmarkNode.title).indexOf(classContext.query) != -1 || String(bookmarkNode.url).indexOf(classContext.query) != -1){
-				writeToDom(bookmarkNode.title, bookmarkNode.url, bookmarkNode.id);
+				var title;
+				if(String(bookmarkNode.title).lastIndexOf('##')!= -1)
+					title = String(bookmarkNode.title).substr(0, String(bookmarkNode.title).lastIndexOf('##'));
+				else
+					title = String(bookmarkNode.title);
+				writeToDom(title, bookmarkNode.url, bookmarkNode.id);
 				classContext.count++;
 			}
 		}
