@@ -30,26 +30,40 @@ function setResultCount(count){
 
 function setEventListeners(){
 	$('#search_button').click(function(){
-		$('#result').empty();
 		var bookmarks = new Bookmarks();
 		var query = $('#search').val();
 		if(!query){
 			getRecent();
 		}else{
 			bookmarks.getAllBmarks(query);
-			chrome.storage.sync.set({'search': query}, function() {});
 		}
+		chrome.storage.sync.set({'search': query}, function() {});
 	});
 	$('#add_button').click(function(){
 		$('#result').empty();
 		var bookmarks = new Bookmarks();
-		var url = $('#currenturl').val();
+		
 		var title = $('#addName').val();
+		var url = $('#currenturl').val();
 		var tags = $('#addTags').val();
+		
 		bookmarks.addBmark(title, url, tags);
 		//update the current dialog
 		showResults();
 	});
+	//focus on search box
+	$('#search').focus();
+	
+	//map enter key press
+	$('#search').keyup(function(event) {
+		$('#search_button').click();
+    });
+	
+	$('#addTags').keypress(function(event) {
+		if (event.keyCode == 13) {
+			$('#add_button').click();
+        }
+    });
 }
 function getRecent(){
 	$('#result').empty();
@@ -87,8 +101,8 @@ function writeToDom(title, urlString, id){
 		anchor.prepend(deleteLink);
 		//take care of click on this delete
 		$('#deletelink').click(function(){
+			getRecent(); //## hack, to prevent the background link working
 			chrome.bookmarks.remove(String(id));
-			e.preventDefault();
 			showResults();
 		});
 	},
