@@ -55,12 +55,11 @@ function getCurrentUrl(){
 }
 function writeToDom(title, urlString, id){
 	//create anchor
-	var anchor = $('<a>');
+	var anchor = $('<div>');
 	
 	//set anchor attributes and click event handler
-	//anchor.attr('href', urlString);
 	anchor.attr('class', 'metro-tile resultlist truncate');
-	anchor.text(title);
+	anchor.append("<span>" + title + "</span>");
 	
 	//create image tag
 	var img = $('<img>');
@@ -73,7 +72,7 @@ function writeToDom(title, urlString, id){
 		chrome.tabs.create({url: urlString});
     });
 	
-	var deleteLink = $('<a id="deletelink" href="#">Delete</a></span>');
+	var deleteLink = $('<a id="deletelink" href="#">Delete</a>');
 	anchor.hover(function(){
 		anchor.prepend(deleteLink);
 		//take care of click on this delete
